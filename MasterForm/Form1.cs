@@ -18,7 +18,7 @@ namespace MasterForm
         {
             InitializeComponent();
         }
-
+        char aj1;
         SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=COMPANIES;User Id=issac;password=Wolverine9");
 
 
@@ -108,38 +108,74 @@ namespace MasterForm
         }
 
         //SAVE SOME DATAS IN SQL
-
-        //NomeFantasia, RazoSocial, CNPJ
         private void savesql_Click(object sender, EventArgs e)
         {
             string nomeFantasia = txtNomeFant.Text.ToString();
             string razaoSocial = txtRazaoSocial.Text.ToString();
-            string CNPJ = txtCNPJ.Text.ToString();
+            string CNPJaj = txtCNPJ.Text.ToString();
 
-            String queryInsert = "INSERT INTO Empresas (NomeFantasia, RazaoSocial , CNPJ, Email) " +
-                                    " values  (@NomeFantasia, @RazaoSocial, @CNPJ, @Email)";
-            try{
-                conneciton.Open();
-                SqlCommand command = new SqlCommand(queryInsert, conneciton);
-                command.Parameters.Add("@NomeFantasia", nomeFantasia);
-                command.Parameters.Add("@RazaoSocial", razaoSocial);
-                command.Parameters.Add("@CNPJ", CNPJ);
-                command.Parameters.Add("@Email", "emailtest@hotmail.com");
+            string CNPJ = formatCNPJ(CNPJaj);
 
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Data saved with successufully");
-            }
-            catch(SqlException ex)
+            if (nomeFantasia == "" || razaoSocial == "" || CNPJ == "")
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Please fill in all fields");
             }
-            finally
+            else
             {
-                conneciton.Close();
+                String queryInsert = "INSERT INTO Empresas (NomeFantasia, RazaoSocial , CNPJ, Email) " +
+                                     " values             (@NomeFantasia, @RazaoSocial, @CNPJ, @Email)";
+                try
+                {
+                    conneciton.Open();
+                    SqlCommand command = new SqlCommand(queryInsert, conneciton);
+                    command.Parameters.Add("@NomeFantasia", nomeFantasia);
+                    command.Parameters.Add("@RazaoSocial", razaoSocial);
+                    command.Parameters.Add("@CNPJ", CNPJ);
+                    command.Parameters.Add("@Email", "emailtest@hotmail.com");
+
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Data saved with successufully");
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    conneciton.Close();
+                }
             }
+        }
 
+        private string formatCNPJ(string cnpjaj)
+        {
+            var builder = new StringBuilder();
+            int count = 0;
+            foreach (var c in cnpjaj)
+            {
+                count++;
+                builder.Append(c);
 
+                Console.WriteLine(cnpjaj.IndexOf(c));
+                if (count == 2)
+                {
+                    builder.Append('.');
+                }
+                else if (count == 5)
+                {
+                    builder.Append('.');
+                }
+                else if (count == 8)
+                {
+                    builder.Append('/');
+                }
+                else if (count == 12)
+                {
+                    builder.Append('-');
+                }
+            }
+            return builder.ToString();
         }
     }
 }

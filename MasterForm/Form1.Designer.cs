@@ -92,6 +92,7 @@ namespace MasterForm
             // txtCNPJ
             // 
             this.txtCNPJ.Location = new System.Drawing.Point(349, 142);
+            this.txtCNPJ.MaxLength = 14;
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(198, 20);
             this.txtCNPJ.TabIndex = 5;
@@ -141,7 +142,7 @@ namespace MasterForm
             this.Controls.Add(this.txtWithSql);
             this.Controls.Add(this.createTxtandPath);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Master Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 
