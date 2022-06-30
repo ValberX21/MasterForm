@@ -19,7 +19,10 @@ namespace MasterForm
             InitializeComponent();
         }
         char aj1;
-        SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=COMPANIES;User Id=issac;password=Wolverine9");
+        int rowAffected;
+        SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=COMPANIES;User Id=issac;password=Wolverine10");
+        private SqlDataReader rdr;
+        SqlDataReader dr = null;
 
 
         // _____________________ CLICK TO GENERATE A FILE .txt IN A PATH ________________________
@@ -40,7 +43,7 @@ namespace MasterForm
             }
         }
 
-        // _____________________ CLICK TO GENERATA A txt FILE WITH SQL SERVER ________________
+        // _____________________ CLICK TO GENERATA A txt FILE WITH SQL SERVER ________________Apple Company 123654789
 
         private void txtWithSql_Click(object sender, EventArgs e)
         {           
@@ -176,6 +179,33 @@ namespace MasterForm
                 }
             }
             return builder.ToString();
+        }
+
+        //_________________ THIS CLICK CALL A SIMPLE PROCEDURE
+        private void callproc_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = conneciton.CreateCommand();
+            cmd.CommandText = "CompanyCNPJ";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            
+            cmd.Parameters.AddWithValue("@txtComp", txtFilterNome.Text.ToString());
+            cmd.Parameters.AddWithValue("@txtCNPJ", txtFilterCnpj.Text.ToString());
+            
+                conneciton.Open();
+
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    Console.WriteLine(dr.GetString(1));
+                    Console.WriteLine(dr.GetString(2));
+                    Console.WriteLine(dr.GetString(3));
+                    Console.WriteLine(dr.GetString(4));
+                }
+
+                conneciton.Close();
+
         }
     }
 }
