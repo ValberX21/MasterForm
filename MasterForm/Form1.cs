@@ -15,7 +15,12 @@ namespace MasterForm
         public Form1()
         {
             InitializeComponent();
+            metodoVal();
         }
+         public void metodoVal()
+            {
+                Console.WriteLine("Agora vai");
+            }
 
     }
 }
