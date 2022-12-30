@@ -15,12 +15,11 @@ namespace MasterForm
         public Form1()
         {
             InitializeComponent();
-            metodoVal();
         }
-         public void metodoVal()
-            {
-                Console.WriteLine("Agora vai");
-            }
 
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("File created !!!");
+        }
     }
 }
