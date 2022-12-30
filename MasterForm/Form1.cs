@@ -21,5 +21,10 @@ namespace MasterForm
         {
             MessageBox.Show("File created !!!");
         }
+
+        private void Btn2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Arquivo criado !!!");
+        }
     }
 }
