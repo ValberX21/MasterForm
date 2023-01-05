@@ -17,14 +17,5 @@ namespace MasterForm
             InitializeComponent();
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("File created !!!");
-        }
-
-        private void Btn2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Arquivo criado !!!");
-        }
     }
 }
