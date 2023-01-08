@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MasterForm
@@ -17,5 +11,25 @@ namespace MasterForm
             InitializeComponent();
         }
 
+        private void createFileText_Click(object sender, EventArgs e)
+        {
+            string path = @"C:\_developer\playground_C#\MasterForm\New-Files";
+            string text = "Lord of the rings" + "\n" + "Hobbit" + "\n" + "Star wars";
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            if (!File.Exists(path))
+            {
+                //Create a file and write
+                using (StreamWriter sw = File.CreateText(path + "\\file.txt"))
+                {
+                    sw.WriteLine(text);
+                }
+                MessageBox.Show("File created !!!");
+            }
+        }
     }
 }
