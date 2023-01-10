@@ -35,11 +35,11 @@ namespace MasterForm
             // 
             // createFileText
             // 
-            this.createFileText.Location = new System.Drawing.Point(333, 193);
+            this.createFileText.Location = new System.Drawing.Point(67, 75);
             this.createFileText.Name = "createFileText";
-            this.createFileText.Size = new System.Drawing.Size(94, 29);
+            this.createFileText.Size = new System.Drawing.Size(126, 29);
             this.createFileText.TabIndex = 0;
-            this.createFileText.Text = "button1";
+            this.createFileText.Text = "Create text file";
             this.createFileText.UseVisualStyleBackColor = true;
             this.createFileText.Click += new System.EventHandler(this.createFileText_Click);
             // 
