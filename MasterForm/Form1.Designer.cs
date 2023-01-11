@@ -31,7 +31,7 @@ namespace MasterForm
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.createFileText = new System.Windows.Forms.Button();
-            this.FileFDb = new System.Windows.Forms.Button();
+            this.importMovies = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // createFileText
@@ -44,22 +44,22 @@ namespace MasterForm
             this.createFileText.UseVisualStyleBackColor = true;
             this.createFileText.Click += new System.EventHandler(this.createFileText_Click);
             // 
-            // FileFDb
+            // importMovies
             // 
-            this.FileFDb.Location = new System.Drawing.Point(67, 143);
-            this.FileFDb.Name = "FileFDb";
-            this.FileFDb.Size = new System.Drawing.Size(202, 29);
-            this.FileFDb.TabIndex = 1;
-            this.FileFDb.Text = "Create file from Database";
-            this.FileFDb.UseVisualStyleBackColor = true;
-            this.FileFDb.Click += new System.EventHandler(this.FileFDb_Click);
+            this.importMovies.Location = new System.Drawing.Point(67, 129);
+            this.importMovies.Name = "importMovies";
+            this.importMovies.Size = new System.Drawing.Size(126, 29);
+            this.importMovies.TabIndex = 1;
+            this.importMovies.Text = "Import file";
+            this.importMovies.UseVisualStyleBackColor = true;
+            this.importMovies.Click += new System.EventHandler(this.importMovies_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
-            this.Controls.Add(this.FileFDb);
+            this.Controls.Add(this.importMovies);
             this.Controls.Add(this.createFileText);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -71,7 +71,7 @@ namespace MasterForm
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button createFileText;
-        private System.Windows.Forms.Button FileFDb;
+        private System.Windows.Forms.Button importMovies;
     }
 }
 

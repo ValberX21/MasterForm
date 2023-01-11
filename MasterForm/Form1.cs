@@ -32,7 +32,7 @@ namespace MasterForm
             }
         }
 
-        private void FileFDb_Click(object sender, EventArgs e)
+        private void importMovies_Click(object sender, EventArgs e)
         {
 
         }
