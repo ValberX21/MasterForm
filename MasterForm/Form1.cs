@@ -15,7 +15,7 @@ namespace MasterForm
         }
 
         //SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD");
-        SqlConnection conneciton = new SqlConnection("Data Source=DATA-BASE-NAME;Initial Catalog=GEEK;User Id=YOUR-USER;password=YOUR-USER-PASSWORD;Trusted_Connection=False;Encrypt=False;MultipleActiveResultSets=true");
+        SqlConnection conneciton = new SqlConnection("Data Source=END-POINT-OF-DATABSE-IN-CLOUD;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD;Trusted_Connection=False;Encrypt=False;MultipleActiveResultSets=true");
 
         private void createFileText_Click(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace MasterForm
             string timeAJ = DateTime.Now.ToString();
             string time = timeAJ.Replace(":", "").Replace("/", "").Replace(" ", "");
 
-            string pathFileAJ = @"C:\Users\valbe\source\repos\MasterForm\New-Files\MOVIES" + time;
+            string pathFileAJ = @"C:\Users\YOUR-USER-NAME\source\repos\MasterForm\New-Files\MOVIES" + time;
 
             string pathFile = pathFileAJ.Replace("/", "");
 
