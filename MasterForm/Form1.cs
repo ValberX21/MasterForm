@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using MySqlConnector;
 
 namespace MasterForm
 {
@@ -13,8 +14,8 @@ namespace MasterForm
             InitializeComponent();
         }
 
-        SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=COMPANIES;User Id=issac;password=Wolverine12");
-
+        //SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD");
+        SqlConnection conneciton = new SqlConnection("Data Source=database-3.ce6562izli1b.us-east-1.rds.amazonaws.com;Initial Catalog=GEEK;User Id=admin;password=dragontiger;Trusted_Connection=False;Encrypt=False;MultipleActiveResultSets=true");
 
         private void createFileText_Click(object sender, EventArgs e)
         {
@@ -39,15 +40,15 @@ namespace MasterForm
 
         private void importMovies_Click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("SELECT Id, Titles, Author FROM MANGAS", conneciton);
+            SqlCommand command = new SqlCommand("SELECT * FROM MOVIES", conneciton);
 
             StringBuilder fileContant = new StringBuilder();
-
-            fileContant.Append("Id");
+                             
+            fileContant.Append("ID");
             fileContant.Append("".PadLeft(15, ' '));
-            fileContant.Append("Titles");
+            fileContant.Append("NAME");
             fileContant.Append("".PadLeft(15, ' '));
-            fileContant.Append("Author");
+            fileContant.Append("Directors");
             fileContant.Append("\n");
 
             try
@@ -56,19 +57,19 @@ namespace MasterForm
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    fileContant.Append(reader["Id"].ToString());
+                    fileContant.Append(reader["ID"].ToString());
                     fileContant.Append("".PadLeft(15, ' '));
-                    fileContant.Append(reader["Titles"].ToString());
+                    fileContant.Append(reader["Title"].ToString());
                     fileContant.Append("".PadLeft(15, ' '));
-                    fileContant.Append(reader["Author"].ToString());
+                    fileContant.Append(reader["Directors"].ToString());
                     fileContant.Append("\n");
-                }
+                }                
 
                 buildTxtFile(fileContant);
             }
-            catch (SqlException eX)
+            catch (SqlException Ex)
             {
-                MessageBox.Show(eX.ToString());
+                MessageBox.Show(Ex.ToString());
             }
             finally
             {
@@ -81,7 +82,7 @@ namespace MasterForm
             string timeAJ = DateTime.Now.ToString();
             string time = timeAJ.Replace(":", "").Replace("/", "").Replace(" ", "");
 
-            string pathFileAJ = @"C:\_developer\playground_C#\MasterForm\New-Files" + time;
+            string pathFileAJ = @"C:\Users\valbe\source\repos\MasterForm\New-Files\MOVIES" + time;
 
             string pathFile = pathFileAJ.Replace("/", "");
 
