@@ -15,7 +15,7 @@ namespace MasterForm
         }
 
         //SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD");
-        SqlConnection conneciton = new SqlConnection("Data Source=database-3.ce6562izli1b.us-east-1.rds.amazonaws.com;Initial Catalog=GEEK;User Id=admin;password=dragontiger;Trusted_Connection=False;Encrypt=False;MultipleActiveResultSets=true");
+        SqlConnection conneciton = new SqlConnection("Data Source=DATA-BASE-NAME;Initial Catalog=GEEK;User Id=YOUR-USER;password=YOUR-USER-PASSWORD;Trusted_Connection=False;Encrypt=False;MultipleActiveResultSets=true");
 
         private void createFileText_Click(object sender, EventArgs e)
         {
@@ -43,7 +43,7 @@ namespace MasterForm
             SqlCommand command = new SqlCommand("SELECT * FROM MOVIES", conneciton);
 
             StringBuilder fileContant = new StringBuilder();
-                             
+                                     
             fileContant.Append("ID");
             fileContant.Append("".PadLeft(15, ' '));
             fileContant.Append("NAME");
