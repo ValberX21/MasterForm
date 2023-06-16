@@ -14,7 +14,7 @@ namespace MasterForm
             InitializeComponent();
         }
 
-        //SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD");
+        //SqlConnection conneciton = new SqlConnection("Data Source=DESKTOP-ULLM2GO\\SQLEXPRESS;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD");       
         SqlConnection conneciton = new SqlConnection("Data Source=END-POINT-OF-DATABSE-IN-CLOUD;Initial Catalog=DATA-BASE-NAME;User Id=YOUR-USER;password=YOUR-USER-PASSWORD;Trusted_Connection=False;Encrypt=False;MultipleActiveResultSets=true");
 
         private void createFileText_Click(object sender, EventArgs e)
@@ -104,6 +104,41 @@ namespace MasterForm
                 }
                 MessageBox.Show("File created successfully");
             }
+        }
+
+        private void readFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath.Text = openFileDialog1.FileName;
+
+                string fPath = openFileDialog1.FileName;
+
+                FileInfo fi = new FileInfo(fPath);
+
+                string nameFile = fi.Name;
+
+                string fnameFile = getFileName(nameFile);
+
+                string idFile = "132568";
+
+                if (fnameFile == idFile)
+                {
+                    string fileContent = File.ReadAllText(fPath, Encoding.UTF8);
+
+                    MessageBox.Show(fileContent);
+                }
+                else
+                {
+                    MessageBox.Show("File code is unknown");
+                }
+            }
+        }
+
+        private string getFileName(string x)
+        {
+            string check = x.Replace("txt", "").Replace(".", "");
+            return check;
         }
     }
 }
